@@ -30,11 +30,8 @@ function addIntention(event) {
 	    var startDate = intention.startDate.value;
 	    var time = intention.time.value;
 	    var minutes = intention.minutes.value;
-	    var location = intention.location.value;
 	    var lat = marker.position.lat;
 	    var lng = marker.position.lat;
-
-	    debugger;
 
 	    //TODO conectar con wedploy y redirigir a findings.html
 	    location.href = 'finding.html';
