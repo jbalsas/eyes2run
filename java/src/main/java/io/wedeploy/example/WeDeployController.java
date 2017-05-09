@@ -1,6 +1,7 @@
 package io.wedeploy.example;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -18,6 +19,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.net.ssl.HttpsURLConnection;
 
 @Controller
 @EnableAutoConfiguration
@@ -95,9 +98,7 @@ public class WeDeployController {
         for (JSONObject blind : blinds) {
             JSONObject noBlind = noBlinds.remove(0);
 
-            sendPost(blind, noBlind.optString("userId"));
-
-            sendPost(noBlind, blind.optString("userId"));
+            sendPost(blind.optString("userId"), noBlind.optString("userId"));
 
             System.out.println("Blind " + blind + " No Blind" + noBlind);
         }
@@ -105,7 +106,7 @@ public class WeDeployController {
 
     private void sendPost(String match1, String match2) throws Exception {
 
-        String url = "http://data.eyes2run.wedeploy.me/intention;
+        String url = "http://data.eyes2run.wedeploy.me/intention";
         URL obj = new URL(url);
         HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
