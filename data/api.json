@@ -1,6 +1,12 @@
 [
 	{
 		"path": "/intentions/*",
-		"data": true
+		"data": true,
+		"method": "GET"
+	},
+	{
+		"path": "/intentions/*",
+		"data": true,
+		"method": "POST"
 	}
 ]
