@@ -16,6 +16,7 @@ function initData() {
 function initMap() {
     var mapOptions = {
         center: new google.maps.LatLng(position.lat, position.lng),
+        disableDoubleClickZoom: true,
         zoom: 16,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
