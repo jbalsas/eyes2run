@@ -10,6 +10,16 @@
 	<link rel="stylesheet" href="main.css">
 </head>
 <body>
+	<button id="demo-menu-lower-left"
+	        class="mdl-button mdl-js-button mdl-button--icon menu">
+	  <i class="material-icons">more_vert</i>
+	</button>
+
+	<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+	    for="demo-menu-lower-left">
+	  <li class="mdl-menu__item" onclick="out(); return false;" style="cursor: pointer;">Logout</li>
+	</ul>
+
 	<div class="user-info">
 		<span class="mdl-chip mdl-chip--contact">
 		    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white" id="userFirstLetter"></span>
@@ -27,6 +37,13 @@
 		if (currentUser) {
 			document.getElementById('userName').innerHTML = currentUser.name;
 			document.getElementById('userFirstLetter').innerHTML = currentUser.name.substring(0,1);
+		}
+
+		function out() {
+			WeDeploy.auth('auth.eyes2run.wedeploy.me').signOut()
+			.then(() => {
+				location.href = '/';
+			});
 		}
 	</script>
 </body>

@@ -107,6 +107,18 @@ img.avatar {
 	top: 20px;
 }
 
+.menu {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	background-color: #45D0E2;
+	border-radius: 5px;
+}
+
+.menu:hover {
+	background-color: #45D0E2;
+}
+
 .mdl-chip__contact:first-letter, .mdl-chip__text:first-letter {
     text-transform:capitalize;
 }
