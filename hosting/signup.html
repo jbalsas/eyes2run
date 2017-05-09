@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Sign In</title>
+	<title>Sign Up</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,700">
 	<link rel="stylesheet" href="main.css">
 </head>
 <body>
-	<form name="user" class="container" onsubmit="signIn(); return false;">
-		<h1>Sign In</h1>
+	<form name="user" class="container" onsubmit="submitForm(); return false;">
+		<h1>Sign Up</h1>
+		<input name="name" type="text" placeholder="Name" required>
 		<input name="email" type="email" placeholder="Email" required>
 		<input name="password" type="password" placeholder="Password" required>
+        <input name="blind" type="checkbox">Blind?</input>
 		<button type="submit">Submit</button>
-		<a href="signup.html">Create an account</a>
+		<a href="/">Back to login</a>
 	</form>
-	
 	<img class="logo" src="logo.png" width="150" alt="WeDeploy">
-	
+
 	<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
 	<script src="index.js"></script>
-	<script>if (auth.currentUser) {document.location.href = '/welcome.html';}</script>
 </body>
 </html>

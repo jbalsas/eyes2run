@@ -1,6 +1,6 @@
 [
 	{
-		"path": "/tasks/*",
+		"path": "/intentions/*",
 		"data": true
 	}
 ]

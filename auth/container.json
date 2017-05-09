@@ -1,0 +1,10 @@
+{
+	"id": "auth",
+	"type": "wedeploy/auth",
+	"env": {
+		"WEDEPLOY_AUTH_PASSWORD": "true",
+		"WEDEPLOY_AUTH_GITHUB": "true",
+		"WEDEPLOY_AUTH_GITHUB_CLIENT_ID": "21c7c663facc1b0ea602",
+		"WEDEPLOY_AUTH_GITHUB_CLIENT_SECRET": "59374a271e4cab2cdcd182195191b5402dfff8ac"
+	}
+}

@@ -1,16 +1,36 @@
-var form = document.querySelector('form');
+var auth = WeDeploy.auth('auth.eyes2run.wedeploy.me');
 
-form.addEventListener('submit', function(e) {
-	e.preventDefault();
+function submitForm() {
+	auth.createUser({
+        blind: user.blind.checked,
+		email: user.email.value,
+		name: user.name.value,
+		password: user.password.value
+	})
+	.then(function() {
+		alert('Account successfully created!');
+		signIn();
+		user.reset();
+	})
+	.catch(function() {
+		alert('Sign-up failed. Try another email.');
+		user.reset();
+	});
+}
 
-WeDeploy.data('http://data.boilerplate-data.wedeploy.io')
-    .create('tasks', {name: form.item.value })
-		.then(function(response) {
-			form.reset();
-			form.item.focus();
-			console.info('Saved:', response);
-		})
-		.catch(function(error) {
-			console.error(error);
-		});
-});
+function signIn() {
+	auth.signInWithEmailAndPassword(user.email.value, user.password.value)
+	.then(function() {
+		document.location.href = '/welcome.html';
+	})
+	.catch(function() {
+		alert('Sign-in failed. Try another email/password.');
+	});
+}
+
+function out() {
+	auth.signOut()
+	.then(() => {
+		location.href = '/';
+	});
+}
