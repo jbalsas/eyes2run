@@ -4,6 +4,8 @@ var position = {
 	lng: -3.6878928
 };
 
+var cityName = "Unknown";
+
 function initData() {
 	var date = new Date();
 
@@ -45,29 +47,49 @@ function addIntention(event) {
 	    var startDate = intention.startDate.value;
 	    var time = intention.time.value;
 	    var minutes = intention.minutes.value;
-	    var lat = marker.position.lat;
-	    var lng = marker.position.lat;
+	    var lat = marker.position.lat();
+	    var lng = marker.position.lng();
 
-		var data = {
-			userId: auth.currentUser.id,
-			startDate: intention.startDate.value,
-			time: intention.time.value,
-			minutes: intention.minutes.value,
-			lat: marker.position.lat,
-			lng: marker.position.lat,
-			matched: false
-		};
+		fetch(`http://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=false`)
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(data) {
+				var cityName = '';
 
-		fetch("http://data.eyes2run.wedeploy.me/intention", {
-			headers: {
-				'Accept': 'application/json, text/plain, */*',
-				'Content-Type': 'application/json'
-			},
-  			method: "post",
-  			body: JSON.stringify(data) 
-		}).then(function() {
-			location.href = 'finding.html';
-		});
+				data.results.forEach(function(result) {
+					result['address_components'].forEach((function(component) {
+						component.types.forEach((function(type) {
+							if (type === 'locality') {
+								cityName = component['short_name'];
+							}
+						}));
+					}));
+				});
+
+				var bodyData = {
+					userId: auth.currentUser.id,
+					startDate: intention.startDate.value,
+					time: intention.time.value,
+					minutes: intention.minutes.value,
+					lat: marker.position.lat,
+					lng: marker.position.lat,
+					cityName: cityName,
+					matched: false
+				};
+
+				fetch("http://data.eyes2run.wedeploy.me/intention", {
+					headers: {
+						'Accept': 'application/json, text/plain, */*',
+						'Content-Type': 'application/json'
+					},
+					method: "post",
+					body: JSON.stringify(bodyData)
+				}).then(function() {
+					location.href = 'finding.html';
+				});
+
+			});
 	} else {
 		location.href = 'signup.html'
 	}
