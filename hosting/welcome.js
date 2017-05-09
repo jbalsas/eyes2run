@@ -20,3 +20,10 @@ function appendUsers(users) {
 
 	list.innerHTML = userList;
 }
+
+function out() {
+	WeDeploy.auth('auth.eyes2run.wedeploy.me').signOut()
+	.then(() => {
+		location.href = '/';
+	});
+}
