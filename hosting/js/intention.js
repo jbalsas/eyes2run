@@ -48,17 +48,23 @@ function addIntention(event) {
 	    var lat = marker.position.lat;
 	    var lng = marker.position.lat;
 
+		var data = {
+			userId: auth.currentUser.id,
+			startDate: intention.startDate.value,
+			time: intention.time.value,
+			minutes: intention.minutes.value,
+			lat: marker.position.lat,
+			lng: marker.position.lat,
+			matched: false
+		};
+
 		fetch("http://data.eyes2run.wedeploy.me/intention", {
-  			method: "POST",
-  			body: {
-				userId: auth.currentUser.id,
-	    		startDate: intention.startDate.value,
-	    		time: intention.time.value,
-	    		minutes: intention.minutes.value,
-	    		lat: marker.position.lat,
-	    		lng: marker.position.lat,
-				matched: false
-			}
+			headers: {
+				'Accept': 'application/json, text/plain, */*',
+				'Content-Type': 'application/json'
+			},
+  			method: "post",
+  			body: JSON.stringify(data) 
 		}).then(function() {
 			location.href = 'finding.html';
 		});
