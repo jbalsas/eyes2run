@@ -76,6 +76,8 @@ function addIntention(event) {
 					}));
 				});
 
+				debugger;
+
 				var bodyData = {
 					userId: auth.currentUser.id,
 					startDate: intention.startDate.value,
@@ -84,7 +86,8 @@ function addIntention(event) {
 					lat: marker.position.lat,
 					lng: marker.position.lat,
 					cityName: cityName,
-					matched: false
+					blind: currentUser.blind,
+					match: false
 				};
 
 				fetch("http://data.eyes2run.wedeploy.me/intention", {

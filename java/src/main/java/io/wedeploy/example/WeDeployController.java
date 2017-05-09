@@ -77,12 +77,14 @@ public class WeDeployController {
         for (int i = 0; i < arr.length(); i++) {
             JSONObject intention =  arr.getJSONObject(i);
 
-            System.out.println("Intention " + intention + "Match " + intention.opt("match"));
+            boolean isBlind = intention.optBoolean("blind");
+
+            System.out.println("Intention " + intention + "\nMatch " + intention.opt("match")+ "\nBlind " + isBlind);
 
             if (!intention.optBoolean("match")) {
-                boolean isBlind = new Boolean(intention.optString("blind").trim());
 
-                System.out.println("Intention " + intention + "Blind " + isBlind);
+                System.out.println("Intention " + intention + "\nBlind " + isBlind);
+
                 if (isBlind) {
                     blinds.add(intention);
                 }
@@ -106,9 +108,9 @@ public class WeDeployController {
 
     private void sendPost(String match1, String match2) throws Exception {
 
-        String url = "http://data.eyes2run.wedeploy.me/intention";
+        String url = "http://data.eyes2run.wedeploy.me/matches";
         URL obj = new URL(url);
-        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         //add reuqest header
         con.setRequestMethod("POST");

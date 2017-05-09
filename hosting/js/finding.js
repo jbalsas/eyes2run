@@ -6,7 +6,7 @@ var ariaContainer = document.querySelector('#ariaContainer');
 var ariaMsg = ariaContainer.innerHTML;
 
 setInterval(function() {
-    fetch("http://data.eyes2run.wedeploy.me/intention/", {
+    fetch("http://data.eyes2run.wedeploy.me/matches/", {
         method: "GET"
     }).then(function(data) {
         return data.json();
