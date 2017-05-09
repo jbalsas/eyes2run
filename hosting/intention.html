@@ -19,15 +19,16 @@
 
 		<label for="minutes">Run duration in minutes</label>
 		<input name="minutes" type="number" placeholder="minutes" autofocus autocomplete="off" value="30" required>
-		
+
 		<label for="location">Run location</label>
-		<div id="map" style="width:300px;height:300px"></div>
-		<input name="location" type="text" placeholder="runLocation" autofocus autocomplete="off" required>
-		
+		<div id="map" style=" height: 200px; width: 200px;" ></div>
+
 		<button type="submit">Find partner</button>
 	</form>
 
-	<script src="https://maps.googleapis.com/maps/api/js"></script>
+	 <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbzmOan3Tnig3diSOYuxTAUan_pI9ePhc&callback=initMap">
+    </script>
 	<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
 
 	<script src="js/intention.js"></script>
