@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="main.css">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body onload="initData()">
 	<form class="container" method="post" name="intention"  onSubmit="addIntention(event);">
 		<h1>My run</h1>
 
@@ -27,7 +27,7 @@
 	</form>
 
 	 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbzmOan3Tnig3diSOYuxTAUan_pI9ePhc&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbzmOan3Tnig3diSOYuxTAUan_pI9ePhc&sensor=false">
     </script>
 	<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
 
