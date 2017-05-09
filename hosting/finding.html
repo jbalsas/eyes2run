@@ -32,19 +32,6 @@
 	</div>
 
 	<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
-	<script>
-		var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
-		if (currentUser) {
-			document.getElementById('userName').innerHTML = currentUser.name;
-			document.getElementById('userFirstLetter').innerHTML = currentUser.name.substring(0,1);
-		}
-
-		function out() {
-			WeDeploy.auth('auth.eyes2run.wedeploy.me').signOut()
-			.then(() => {
-				location.href = '/';
-			});
-		}
-	</script>
+	<script src="js/finding.js"></script>
 </body>
 </html>

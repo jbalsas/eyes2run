@@ -44,6 +44,10 @@ function initMap() {
 function addIntention(event) {
 	event.preventDefault();
 
+	var auth = WeDeploy.auth('auth.eyes2run.wedeploy.me');
+
+	var currentUser = auth.currentUser;
+
 	if (currentUser) {
 	    var userEmail = currentUser.email;
 	    var startDate = intention.startDate.value;
@@ -52,9 +56,26 @@ function addIntention(event) {
 	    var lat = marker.position.lat;
 	    var lng = marker.position.lat;
 
-	    //TODO conectar con wedploy y redirigir a findings.html
-	    location.href = 'finding.html';
+		var data = {
+			userId: auth.currentUser.id,
+			startDate: intention.startDate.value,
+			time: intention.time.value,
+			minutes: intention.minutes.value,
+			lat: marker.position.lat,
+			lng: marker.position.lat,
+			matched: false
+		};
 
+		fetch("http://data.eyes2run.wedeploy.me/intention", {
+			headers: {
+				'Accept': 'application/json, text/plain, */*',
+				'Content-Type': 'application/json'
+			},
+  			method: "post",
+  			body: JSON.stringify(data) 
+		}).then(function() {
+			location.href = 'finding.html';
+		});
 	} else {
 		location.href = 'signup.html'
 	}
