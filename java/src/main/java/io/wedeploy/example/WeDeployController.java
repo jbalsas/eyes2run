@@ -39,6 +39,50 @@ public class WeDeployController {
         return new ModelAndView("layout");
     }
 
+    private boolean isMatch(String userId) throws Exception {
+        URL url = new URL("http://data.eyes2run.wedeploy.me/matches");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+        // optional default is GET
+        con.setRequestMethod("GET");
+
+        //add request header
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'GET' request to URL : " + url);
+        System.out.println("Response Code : " + responseCode);
+
+        BufferedReader in = new BufferedReader(
+            new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+
+        in.close();
+
+        String intentions = response.toString();
+
+        intentions = "{\"matches\": " + intentions + "}";
+
+        JSONObject obj = new JSONObject(intentions);
+
+        JSONArray arr = obj.getJSONArray("matches");
+
+        for (int i = 0; i < arr.length(); i++) {
+            JSONObject match =  arr.getJSONObject(i);
+
+            System.out.println("MATCH 1" + match.optString("match1") + " MATCH2 " + match.optString("match2"));
+
+            if (match.optString("match1").equals(userId) || match.optString("match12").equals(userId)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     // HTTP GET request
     private void sendGet() throws Exception {
         URL url = new URL("http://data.eyes2run.wedeploy.me/intention");
@@ -81,8 +125,7 @@ public class WeDeployController {
 
             System.out.println("Intention " + intention + "\nMatch " + intention.opt("match")+ "\nBlind " + isBlind);
 
-            if (!intention.optBoolean("match")) {
-
+            if (!isMatch(intention.optString("userId"))) {
                 System.out.println("Intention " + intention + "\nBlind " + isBlind);
 
                 if (isBlind) {
