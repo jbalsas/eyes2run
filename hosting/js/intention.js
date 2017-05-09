@@ -14,7 +14,9 @@ function initData() {
 
 	if (currentUser) {
 		document.getElementById('userName').innerHTML = currentUser.name;
-		document.getElementById('userFirstLetter').innerHTML = currentUser.name.substring(0,1);
+		if (currentUser.blind) {
+			document.getElementById('userIcon').src = '/images/icons/closed-eye.png';
+		}
 	}
 
 	initMap();

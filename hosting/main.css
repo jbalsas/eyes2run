@@ -122,3 +122,9 @@ img.avatar {
 .mdl-chip__contact:first-letter, .mdl-chip__text:first-letter {
     text-transform:capitalize;
 }
+
+.mdl-chip__contact {
+	margin-left: 8px;
+	height: 25px;
+	width: 25px;
+}
