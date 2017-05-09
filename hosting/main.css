@@ -95,3 +95,8 @@ p.signup a {
 	display: inline;
 	padding-left: 8px;
 }
+
+img.avatar {
+	border-radius: 50%;
+	margin: auto;
+}
