@@ -25,7 +25,8 @@ function initMap() {
 function addIntention(event) {
 	event.preventDefault();
 
-	var auth = WeDeploy.auth('http://auth.eyes2run.wedeploy.me');
+	var auth = WeDeploy.auth('auth.eyes2run.wedeploy.me');
+
 	var currentUser = auth.currentUser;
 
 	if (currentUser) {
@@ -35,41 +36,16 @@ function addIntention(event) {
 	    var minutes = intention.minutes.value;
 	    var lat = marker.position.lat;
 	    var lng = marker.position.lat;
-		
-		debugger;
-		
-		WeDeploy
-           .data('data.eyes2run.wedeploy.me') // this should be io in production
-           .create('states', {
-               id: 1,
-               userId: 2,
-               busy: 1,
-               date: Date.now(),
-           }).then(function(state) {
-			   debugger;
-               console.info('Saved:', state);
-           })
-           .catch(function(error) {
-			   debugger;
-               console.error(error);
-           });
-/*
-		WeDeploy.data('http://data.eyes2run.wedeploy.me')
-			.create('intention', {
-				userId: '1111',
-				matched: false
-			})
-			.then(function(response) {
-				debugger;
-				location.href = 'finding.html';
-			})
-			.catch(function(error) {
-				console.error(error);
-			});
-*/
-	    //TODO conectar con wedploy y redirigir a findings.html
-	    
 
+		fetch("http://data.eyes2run.wedeploy.me/intention", {
+  			method: "POST",
+  			body: {
+				userId: auth.currentUser.id,
+				matched: false
+			}
+		}).then(function() {
+			debugger;
+		});
 	} else {
 		location.href = 'signup.html'
 	}
