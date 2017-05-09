@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>List / To-do</title>
+	<title>Finding partner...</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,700">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-teal.min.css" />
@@ -10,9 +10,30 @@
 	<link rel="stylesheet" href="main.css">
 </head>
 <body>
+	<button id="demo-menu-lower-left"
+	        class="mdl-button mdl-js-button mdl-button--icon menu">
+	  <i class="material-icons">more_vert</i>
+	</button>
+
+	<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+	    for="demo-menu-lower-left">
+	  <li class="mdl-menu__item" onclick="out(); return false;" style="cursor: pointer;">Logout</li>
+	</ul>
+
+	<div class="user-info">
+		<span class="mdl-chip mdl-chip--contact">
+		    <img class="mdl-chip__contact" id="userIcon" src="/images/icons/open-eye.png"></img>
+		    <span class="mdl-chip__text" id="userName"></span>
+		</span>
+	</div>
 	<div class="container">
-	<h1>Looking for a partner...</h1>
+	<h1>Running to a partner.</h1>
 	<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
 	</div>
+
+	<div role="status" class="sr-only waitmsgtemplate" id="ariaContainer" aria-live="polite">We're looking for a partner. Please, wait.</div>
+
+	<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
+	<script src="js/finding.js"></script>
 </body>
 </html>

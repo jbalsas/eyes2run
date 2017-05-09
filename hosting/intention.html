@@ -4,11 +4,32 @@
 	<meta charset="UTF-8">
 	<title>Eyes2Run</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-teal.min.css" />
 	<link rel="stylesheet" href="main.css">
 	<link rel="stylesheet" href="css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
-<body>
+<body onload="initData()">
+	<button id="demo-menu-lower-left"
+	        class="mdl-button mdl-js-button mdl-button--icon menu">
+	  <i class="material-icons">more_vert</i>
+	</button>
+
+	<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+	    for="demo-menu-lower-left">
+	  <li class="mdl-menu__item" onclick="out(); return false;" style="cursor: pointer;">Logout</li>
+	</ul>
+
 	<form class="container" method="post" name="intention"  onSubmit="addIntention(event);">
+		<div class="user-info">
+			<span class="mdl-chip mdl-chip--contact">
+			    <img class="mdl-chip__contact" id="userIcon" src="/images/icons/open-eye.png"></img>
+			    <span class="mdl-chip__text" id="userName"></span>
+			</span>
+		</div>
+
 		<h1>My run</h1>
 
 		<label for="startDate">Start date</label>
@@ -21,13 +42,13 @@
 		<input name="minutes" type="number" placeholder="minutes" autofocus autocomplete="off" value="30" required>
 
 		<label for="location">Run location</label>
-		<div id="map" style=" height: 200px; width: 200px;" ></div>
+		<div id="map" style=" height: 200px; width: auto;" ></div>
 
 		<button type="submit">Find partner</button>
 	</form>
 
 	 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbzmOan3Tnig3diSOYuxTAUan_pI9ePhc&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbzmOan3Tnig3diSOYuxTAUan_pI9ePhc&sensor=false">
     </script>
 	<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
 
