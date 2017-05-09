@@ -1,0 +1,21 @@
+{
+  "name": "Eyes2Run App",
+  "short_name": "Eyes2Run",
+  "icons": [
+    {
+      "src": "images/icons/eye_192.png",
+      "sizes": "192×192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/eye_512.jpeg",
+      "sizes": "512×512",
+      "type": "image/png"
+    },
+  ],
+  "orientation": "portrait",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#3E4EB8",
+  "theme_color": "#2F3BA2"
+}
