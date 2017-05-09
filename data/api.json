@@ -5,6 +5,12 @@
 		"data": true,
 		"method": "GET"
    },
+  {
+    "description": "returns the list of intentions",
+    "path": "/intention/*",
+    "data": true,
+    "method": "PUT"
+  },
    {
         "description": "Creates a new intention",
         "path": "/intention",
@@ -16,4 +22,18 @@
         },
         "data": true
     }
+  {
+    "description": "returns the list of matches",
+    "path": "/matches/*",
+    "data": true,
+    "method": "GET"
+  },
+  {
+    "description": "Creates a new match",
+    "path": "/matches",
+    "method": "POST",
+    "data": true
+  }
+
+
 ]
