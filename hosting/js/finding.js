@@ -10,13 +10,15 @@ setInterval(function() {
         method: "GET"
     }).then(function(data) {
         return data.json();
-    }).then(function(intentions) {
-        var match = intentions.filter(function(intention) {
-            return intention.matched === currentUser.id;
+    }).then(function(matches) {
+        var match = matches.filter(function(result) {
+            return ((result.match1 === currentUser.id) || (result.match2 === currentUser.id));
         });
 
         if (match.length) {
-            location.href = `partner.html?partner=${match[0].matched}`;
+            var partner = match[0].match1 === currentUser.id ? match[0].match1 : match[0].match2;
+
+            location.href = `partner.html?partner=${partner}`;
         } else {
             ariaContainer.innerHTML = ariaMsg;
         }
