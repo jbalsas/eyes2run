@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-	background: #0e141a;
+	background: #0099A5;
 	font-family: 'Open Sans', sans-serif;
 	display: flex;
 	align-items: center;
@@ -23,11 +23,16 @@ h1 {
 }
 
 .logo {
+	filter: invert();
 	position: absolute;
-	bottom: 20px;
+	top: 150px;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: -1;
+}
+
+.inlinelogo {
+	filter: invert();
 }
 
 label {
@@ -51,8 +56,12 @@ input {
 	margin: 0 0 10px;
 }
 
+input::placeholder {
+	color: #d5e1e4;
+}
+
 button {
-	background: #00d46a;
+	background: #45D0E2;
 	border-radius: 4px;
 	border: 0;
 	color: white;
@@ -68,7 +77,7 @@ button {
 }
 
 a {
-	color: #00d46a;
+	color: #45D0E2;
 	text-decoration: none;
 	margin: 15px 0 0;
 	display: block;
@@ -76,4 +85,13 @@ a {
 
 .list {
 	color: rgba(255, 255, 255, .7);
+}
+
+p.signup {
+	color: #d5e1e4;
+}
+
+p.signup a {
+	display: inline;
+	padding-left: 8px;
 }

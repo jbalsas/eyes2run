@@ -4,19 +4,27 @@
 	<meta charset="UTF-8">
 	<title>Sign Up</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-teal.min.css" />
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	<link rel="stylesheet" href="main.css">
 </head>
 <body>
+	<img class="logo" src="logo.png" width="150" alt="eyes2run">
+
 	<form name="user" class="container" onsubmit="submitForm(); return false;">
-		<h1>Sign Up</h1>
 		<input name="name" type="text" placeholder="Name" required>
 		<input name="email" type="email" placeholder="Email" required>
 		<input name="password" type="password" placeholder="Password" required>
-        <input name="blind" type="checkbox">Blind?</input>
+
+		<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="blind">
+			<input type="checkbox" id="blind" class="mdl-switch__input" name="blind" checked>
+			<span class="mdl-switch__label">Are you blind?</span>
+		</label>
+
 		<button type="submit">Submit</button>
 		<a href="/">Back to login</a>
 	</form>
-	<img class="logo" src="logo.png" width="150" alt="WeDeploy">
 
 	<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
 	<script src="index.js"></script>
