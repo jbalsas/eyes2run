@@ -24,21 +24,51 @@ function initMap() {
 
 function addIntention(event) {
 	event.preventDefault();
-	var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
+
+	var auth = WeDeploy.auth('http://auth.eyes2run.wedeploy.me');
+	var currentUser = auth.currentUser;
 
 	if (currentUser) {
 	    var userEmail = currentUser.email;
 	    var startDate = intention.startDate.value;
 	    var time = intention.time.value;
 	    var minutes = intention.minutes.value;
-	    var location = intention.location.value;
 	    var lat = marker.position.lat;
 	    var lng = marker.position.lat;
-
-	    debugger;
-
+		
+		debugger;
+		
+		WeDeploy
+           .data('data.eyes2run.wedeploy.me') // this should be io in production
+           .create('states', {
+               id: 1,
+               userId: 2,
+               busy: 1,
+               date: Date.now(),
+           }).then(function(state) {
+			   debugger;
+               console.info('Saved:', state);
+           })
+           .catch(function(error) {
+			   debugger;
+               console.error(error);
+           });
+/*
+		WeDeploy.data('http://data.eyes2run.wedeploy.me')
+			.create('intention', {
+				userId: '1111',
+				matched: false
+			})
+			.then(function(response) {
+				debugger;
+				location.href = 'finding.html';
+			})
+			.catch(function(error) {
+				console.error(error);
+			});
+*/
 	    //TODO conectar con wedploy y redirigir a findings.html
-	    location.href = 'finding.html';
+	    
 
 	} else {
 		location.href = 'signup.html'
