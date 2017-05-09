@@ -2,9 +2,10 @@ var marker;
 var currentPosition;
 
 function initData() {
-	//get todat startdate and time
-	//
+	var date = new Date();
 
+	document.getElementById('startDate').value = date.toISOString().slice(0,10);
+	document.getElementById('time').value = date.getHours() + ':' + date.getMinutes();
 }
 
 function initMap() {
