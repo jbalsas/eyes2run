@@ -1,12 +1,19 @@
 [
 	{
-		"path": "/intentions/*",
+		"description": "returns the list of intentions",
+		"path": "/intention/*",
 		"data": true,
 		"method": "GET"
-	},
-	{
-		"path": "/intentions/*",
-		"data": true,
-		"method": "POST"
-	}
+   },
+   {
+        "description": "Creates a new intention",
+        "path": "/intention",
+        "method": "POST",
+        "parameters": {
+            "userId": {
+                "required": true
+            }
+        },
+        "data": true
+    }
 ]
