@@ -2,25 +2,35 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Add / To-do</title>
+	<title>Eyes2Run</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,700">
 	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-	<form class="container">
+	<form class="container" method="post" name="intention"  onSubmit="addIntention()">
 		<h1>My run</h1>
-		<label for="email">Email</label>
-		<input name="email" type="text" placeholder="email" autofocus autocomplete="off" required>
-		<label for="runTimestamp">Start date and time</label>
-		<input name="runTimestamp" type="text" placeholder="Start date and time" autofocus autocomplete="off" required>
-		<label for="runDurationInMinutes">Run duration in minutes</label>
-		<input name="runDurationInMinutes" type="text" placeholder="runDurationInMinutes" autofocus autocomplete="off" required>
-		<label for="runLocation">Run location</label>
-		<input name="runLocation" type="text" placeholder="runLocation" autofocus autocomplete="off" required>
+
+		<label for="startDate">Start date</label>
+		<input type="date" name="startDate" placeholder="Start date" autofocus autocomplete="off" required>
+
+		<label for="time">Time</label>
+		<input name="time" type="time" placeholder="time" autofocus autocomplete="off" required>
+
+		<label for="minutes">Run duration in minutes</label>
+		<input name="minutes" type="number" placeholder="minutes" autofocus autocomplete="off" value="30" required>
+		
+		<label for="location">Run location</label>
+		<div id="map" style="width:300px;height:300px"></div>
+		<input name="location" type="text" placeholder="runLocation" autofocus autocomplete="off" required>
+		
 		<button type="submit">Find partner</button>
 	</form>
 
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
-	<script src="intention.js"></script>
+
+	<script src="js/intention.js"></script>
+
 </body>
 </html>
