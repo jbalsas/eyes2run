@@ -122,3 +122,8 @@ img.avatar {
 .mdl-chip__contact:first-letter, .mdl-chip__text:first-letter {
     text-transform:capitalize;
 }
+
+.sr-only {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute;
+}
