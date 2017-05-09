@@ -10,9 +10,24 @@
 	<link rel="stylesheet" href="main.css">
 </head>
 <body>
+	<div class="user-info">
+		<span class="mdl-chip mdl-chip--contact">
+		    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white" id="userFirstLetter"></span>
+		    <span class="mdl-chip__text" id="userName"></span>
+		</span>
+	</div>
 	<div class="container">
 	<h1>Looking for a partner...</h1>
 	<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
 	</div>
+
+	<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
+	<script>
+		var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
+		if (currentUser) {
+			document.getElementById('userName').innerHTML = currentUser.name;
+			document.getElementById('userFirstLetter').innerHTML = currentUser.name.substring(0,1);
+		}
+	</script>
 </body>
 </html>

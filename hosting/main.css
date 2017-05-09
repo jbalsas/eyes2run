@@ -100,3 +100,13 @@ img.avatar {
 	border-radius: 50%;
 	margin: auto;
 }
+
+.user-info {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+
+.mdl-chip__contact:first-letter, .mdl-chip__text:first-letter {
+    text-transform:capitalize;
+}

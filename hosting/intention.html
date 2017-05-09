@@ -4,11 +4,20 @@
 	<meta charset="UTF-8">
 	<title>Eyes2Run</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-teal.min.css" />
 	<link rel="stylesheet" href="main.css">
-	<link rel="stylesheet" href="css/styles.css">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
 <body onload="initData()">
 	<form class="container" method="post" name="intention"  onSubmit="addIntention(event);">
+		<div class="user-info">
+			<span class="mdl-chip mdl-chip--contact">
+			    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white" id="userFirstLetter"></span>
+			    <span class="mdl-chip__text" id="userName"></span>
+			</span>
+		</div>
+
 		<h1>My run</h1>
 
 		<label for="startDate">Start date</label>

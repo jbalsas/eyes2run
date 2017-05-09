@@ -4,13 +4,21 @@ var position = {
 	lng: -3.6878928
 };
 
+var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
+
 function initData() {
 	var date = new Date();
 
 	document.getElementById('startDate').value = date.toISOString().slice(0,10);
 	document.getElementById('time').value = date.getHours() + ':' + date.getMinutes();
 
+	if (currentUser) {
+		document.getElementById('userName').innerHTML = currentUser.name;
+		document.getElementById('userFirstLetter').innerHTML = currentUser.name.substring(0,1);
+	}
+
 	initMap();
+
 }
 
 function initMap() {
@@ -35,7 +43,6 @@ function initMap() {
 
 function addIntention(event) {
 	event.preventDefault();
-	var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
 
 	if (currentUser) {
 	    var userEmail = currentUser.email;
