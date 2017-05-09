@@ -21,7 +21,7 @@ function submitForm() {
 function signIn() {
 	auth.signInWithEmailAndPassword(user.email.value, user.password.value)
 	.then(function() {
-		document.location.href = '/welcome.html';
+		document.location.href = '/intention.html';
 	})
 	.catch(function() {
 		alert('Sign-in failed. Try another email/password.');

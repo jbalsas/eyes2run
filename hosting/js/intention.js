@@ -22,7 +22,8 @@ function initMap() {
 }
 
 function addIntention(event) {
-	var currentUser = WeDeploy.auth('http://<serviceID>.<projectID>.wedeploy.io').currentUser;
+	event.preventDefault();
+	var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
 
 	if (currentUser) {
 	    var userEmail = currentUser.email;
@@ -33,8 +34,10 @@ function addIntention(event) {
 	    var lat = marker.position.lat;
 	    var lng = marker.position.lat;
 
+	    debugger;
+
 	    //TODO conectar con wedploy y redirigir a findings.html
-	    location.href = 'findings.html'
+	    location.href = 'finding.html';
 
 	} else {
 		location.href = 'signup.html'
