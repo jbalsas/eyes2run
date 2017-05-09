@@ -5,6 +5,7 @@ var position = {
 };
 
 var cityName = "Unknown";
+var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
 
 function initData() {
 	var date = new Date();
@@ -12,7 +13,15 @@ function initData() {
 	document.getElementById('startDate').value = date.toISOString().slice(0,10);
 	document.getElementById('time').value = date.getHours() + ':' + date.getMinutes();
 
+	if (currentUser) {
+		document.getElementById('userName').innerHTML = currentUser.name;
+		if (currentUser.blind) {
+			document.getElementById('userIcon').src = '/images/icons/closed-eye.png';
+		}
+	}
+
 	initMap();
+
 }
 
 function initMap() {

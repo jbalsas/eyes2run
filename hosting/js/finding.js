@@ -2,6 +2,9 @@ var auth = WeDeploy.auth('auth.eyes2run.wedeploy.me');
 
 var currentUser = auth.currentUser;
 
+var ariaContainer = document.querySelector('#ariaContainer');
+var ariaMsg = ariaContainer.innerHTML;
+
 setInterval(function() {
     fetch("http://data.eyes2run.wedeploy.me/intention/", {
         method: "GET"
@@ -14,6 +17,24 @@ setInterval(function() {
 
         if (match.length) {
             location.href = `partner.html?partner=${match[0].matched}`;
+        } else {
+            ariaContainer.innerHTML = ariaMsg;
         }
     });
-}, 1000);
+}, 5000);
+
+var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
+
+if (currentUser) {
+    document.getElementById('userName').innerHTML = currentUser.name;
+    if (currentUser.blind) {
+        document.getElementById('userIcon').src = '/images/icons/closed-eye.png';
+    };
+}
+
+function out() {
+    WeDeploy.auth('auth.eyes2run.wedeploy.me').signOut()
+    .then(() => {
+        location.href = '/';
+    });
+}
