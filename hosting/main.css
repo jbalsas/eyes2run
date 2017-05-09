@@ -128,3 +128,8 @@ img.avatar {
 	height: 25px;
 	width: 25px;
 }
+
+.sr-only {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute;
+}
