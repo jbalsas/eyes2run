@@ -1,4 +1,4 @@
-var auth = WeDeploy.auth('auth.eyes2run.wedeploy.io');
+var auth = WeDeploy.auth('auth.eyes2run.wedeploy.me');
 
 var currentUser = auth.currentUser;
 
@@ -6,7 +6,7 @@ var ariaContainer = document.querySelector('#ariaContainer');
 var ariaMsg = ariaContainer.innerHTML;
 
 setInterval(function() {
-    fetch("http://data.eyes2run.wedeploy.io/matches/", {
+    fetch("http://data.eyes2run.wedeploy.me/matches/", {
         method: "GET"
     }).then(function(data) {
         return data.json();
@@ -25,7 +25,7 @@ setInterval(function() {
     });
 }, 5000);
 
-var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.io').currentUser;
+var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
 
 if (currentUser) {
     document.getElementById('userName').innerHTML = currentUser.name;
@@ -35,7 +35,7 @@ if (currentUser) {
 }
 
 function out() {
-    WeDeploy.auth('auth.eyes2run.wedeploy.io').signOut()
+    WeDeploy.auth('auth.eyes2run.wedeploy.me').signOut()
     .then(() => {
         location.href = '/';
     });

@@ -40,7 +40,7 @@ public class WeDeployController {
     }
 
     private boolean isMatch(String userId) throws Exception {
-        URL url = new URL("http://data.eyes2run.wedeploy.io/matches");
+        URL url = new URL("http://data.eyes2run.wedeploy.me/matches");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
         // optional default is GET
@@ -85,7 +85,7 @@ public class WeDeployController {
 
     // HTTP GET request
     private void sendGet() throws Exception {
-        URL url = new URL("http://data.eyes2run.wedeploy.io/intention");
+        URL url = new URL("http://data.eyes2run.wedeploy.me/intention");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
         // optional default is GET
@@ -151,7 +151,7 @@ public class WeDeployController {
 
     private void sendPost(String match1, String match2) throws Exception {
 
-        String url = "http://data.eyes2run.wedeploy.io/matches";
+        String url = "http://data.eyes2run.wedeploy.me/matches";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 

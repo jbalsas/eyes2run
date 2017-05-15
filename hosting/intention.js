@@ -4,13 +4,13 @@ var form = document.querySelector('form');
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    var auth = WeDeploy.auth('auth.eyes2run.wedeploy.io').currentUser;
+    var auth = WeDeploy.auth('auth.eyes2run.wedeploy.me').currentUser;
 
     console.info('UserId:', auth)
 
     console.info('UserId:', auth.id)
 
-    WeDeploy.data('http://data.eyes2run.wedeploy.io')
+    WeDeploy.data('http://data.eyes2run.wedeploy.me')
         .create('intention', {userId: auth.id })
         .then(function(response) {
             form.reset();

@@ -1,4 +1,4 @@
-var auth = WeDeploy.auth('auth.eyes2run.wedeploy.io');
+var auth = WeDeploy.auth('auth.eyes2run.wedeploy.me');
 
 function submitForm() {
 	auth.createUser({
