@@ -5,7 +5,7 @@ var position = {
 };
 
 var cityName = "Unknown";
-var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
+var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.io').currentUser;
 
 function initData() {
 	var date = new Date();
@@ -47,7 +47,7 @@ function initMap() {
 function addIntention(event) {
 	event.preventDefault();
 
-	var auth = WeDeploy.auth('auth.eyes2run.wedeploy.me');
+	var auth = WeDeploy.auth('auth.eyes2run.wedeploy.io');
 
 	var currentUser = auth.currentUser;
 
@@ -90,16 +90,17 @@ function addIntention(event) {
 					match: false
 				};
 
-				fetch("http://data.eyes2run.wedeploy.me/intention", {
-					headers: {
-						'Accept': 'application/json, text/plain, */*',
-						'Content-Type': 'application/json'
-					},
-					method: "post",
-					body: JSON.stringify(bodyData)
-				}).then(function() {
-					location.href = 'finding.html';
-				});
+				WeDeploy.data('data.eyes2run.wedeploy.io')
+					.create('/intention', bodyData)
+					.then(function(result) {
+						console.log(result);
+						debugger;
+						location.href = 'finding.html';
+					})
+					.catch(function(error) {
+						console.log(error);
+						debugger;
+					})
 
 			});
 	} else {
