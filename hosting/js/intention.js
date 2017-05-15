@@ -90,16 +90,17 @@ function addIntention(event) {
 					match: false
 				};
 
-				fetch("http://data.eyes2run.wedeploy.me/intention", {
-					headers: {
-						'Accept': 'application/json, text/plain, */*',
-						'Content-Type': 'application/json'
-					},
-					method: "post",
-					body: JSON.stringify(bodyData)
-				}).then(function() {
-					location.href = 'finding.html';
-				});
+				WeDeploy.data('data.eyes2run.wedeploy.me')
+					.create('/intention', bodyData)
+					.then(function(result) {
+						console.log(result);
+						debugger;
+						location.href = 'finding.html';
+					})
+					.catch(function(error) {
+						console.log(error);
+						debugger;
+					})
 
 			});
 	} else {
