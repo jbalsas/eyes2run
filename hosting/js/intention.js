@@ -5,7 +5,7 @@ var position = {
 };
 
 var cityName = "Unknown";
-var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
+var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.io').currentUser;
 
 function initData() {
 	var date = new Date();
@@ -47,7 +47,7 @@ function initMap() {
 function addIntention(event) {
 	event.preventDefault();
 
-	var auth = WeDeploy.auth('auth.eyes2run.wedeploy.me');
+	var auth = WeDeploy.auth('auth.eyes2run.wedeploy.io');
 
 	var currentUser = auth.currentUser;
 
@@ -90,7 +90,7 @@ function addIntention(event) {
 					match: false
 				};
 
-				WeDeploy.data('data.eyes2run.wedeploy.me')
+				WeDeploy.data('data.eyes2run.wedeploy.io')
 					.create('/intention', bodyData)
 					.then(function(result) {
 						console.log(result);

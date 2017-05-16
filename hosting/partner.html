@@ -57,7 +57,7 @@
 
 	<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
 	<script>
-		var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.me').currentUser;
+		var currentUser = WeDeploy.auth('http://auth.eyes2run.wedeploy.io').currentUser;
 		if (currentUser) {
 			document.getElementById('userName').innerHTML = currentUser.name;
 			if (currentUser.blind) {
@@ -65,7 +65,7 @@
 			};
 		}
 		function out() {
-			WeDeploy.auth('auth.eyes2run.wedeploy.me').signOut()
+			WeDeploy.auth('auth.eyes2run.wedeploy.io').signOut()
 			.then(() => {
 				location.href = '/';
 			});
